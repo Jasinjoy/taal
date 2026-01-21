@@ -1,0 +1,634 @@
+/* Mobile-first responsive design for TAAL Catering People */
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Header - Mobile first with hamburger menu */
+header {
+  background: #d40000;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(212, 0, 0, 0.3);
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 3px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  background: #d40000;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  padding: 15px 20px;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+}
+
+#menu-toggle:checked ~ .nav {
+  transform: translateY(0);
+  max-height: 300px;
+}
+
+#menu-toggle:checked + .hamburger span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+#menu-toggle:checked + .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+
+#menu-toggle:checked + .hamburger span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Hero section */
+.hero {
+  background: linear-gradient(rgba(212,0,0,0.8), rgba(212,0,0,0.8)),
+              url('https://images.unsplash.com/photo-1555243896-c709bfa0b564') center/cover no-repeat fixed;
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  margin: 15px 0 30px;
+}
+
+/* SMALLER BUTTONS - Updated sizing */
+/* Update only the .btn styles in your style.css - replace existing .btn rule */
+
+.btn {
+  background: white;
+  color: #d40000;
+  padding: 8px 20px; /* Reduced from 12px 25px - smaller buttons */
+  border-radius: 25px; /* Slightly smaller radius */
+  font-weight: bold;
+  text-decoration: none;
+  margin: 10px;
+  display: inline-block;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15); /* Smaller shadow */
+  font-size: 0.95rem; /* Slightly smaller font */
+}
+
+/* Responsive button sizing */
+@media (max-width: 480px) {
+  .btn {
+    padding: 7px 18px; /* Even smaller on mobile */
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .btn {
+    padding: 10px 24px; /* Perfect size on tablet/desktop */
+  }
+}
+
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* Responsive button sizing */
+@media (max-width: 480px) {
+  .btn {
+    padding: 7px 18px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .btn {
+    padding: 10px 24px;
+  }
+}
+
+/* Sections base */
+section {
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+section h2 {
+  color: #d40000;
+  margin-bottom: 25px;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+/* Menu cards */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #fff;
+  padding: 25px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.card h3,
+.card a {
+  color: #d40000;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.card p {
+  color: #666;
+}
+
+/* Services list */
+.services ul {
+  list-style: none;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.services li {
+  padding: 12px 0;
+}
+
+/* Contact */
+.contact {
+  background: #f8f9fa;
+}
+
+/* Footer */
+footer {
+  background: #d40000;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* WhatsApp button */
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25d366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 24px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  transition: transform 0.2s;
+  z-index: 1000;
+}
+
+.whatsapp:hover {
+  transform: scale(1.1);
+}
+
+/* Tablet styles */
+@media (min-width: 768px) {
+  header {
+    padding: 15px 40px;
+  }
+
+  .logo {
+    height: 60px;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .nav {
+    position: static;
+    flex-direction: row;
+    transform: none;
+    max-height: none;
+    background: none;
+  }
+
+  .nav a {
+    margin-left: 25px;
+    padding: 10px 0;
+    border-bottom: none;
+  }
+
+  .hero {
+    padding: 120px 40px;
+    min-height: 70vh;
+    background-attachment: fixed;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
+    gap: 25px;
+  }
+
+  section {
+    padding: 70px 40px;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+  header {
+    padding: 20px 60px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1100px;
+    gap: 30px;
+  }
+
+  .hero {
+    padding: 150px 60px;
+  }
+
+  section {
+    padding: 80px 60px;
+  }
+
+  .services ul {
+    font-size: 1.4rem;
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Print styles */
+@media print {
+  .hamburger, .whatsapp { display: none; }
+  .nav { position: static !important; }
+}
+
+/* IMAGE SLIDER */
+.slider-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.slider {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.slides {
+  display: flex;
+  gap: 20px;
+}
+
+.slides img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 14px;
+  scroll-snap-align: start;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* REVIEWS */
+.reviews {
+  background: #f9f9f9;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.review-cards {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.review {
+  background: #fff;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.review p {
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.review h4 {
+  color: #d40000;
+  margin-bottom: 5px;
+}
+
+.review span {
+  font-size: 14px;
+  color: #777;
+}
+
+/* ===== DRINKS MODAL ===== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+
+  display: none;              /* hidden by default */
+  align-items: center;        /* center vertically */
+  justify-content: center;    /* center horizontally */
+}
+
+
+.modal-content {
+  background: #fff;
+  max-width: 550px;
+  width: 100%;
+  max-height: 80vh;          /* IMPORTANT */
+  padding: 30px;
+  border-radius: 16px;
+  position: relative;
+  animation: zoomIn 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #d40000;
+}
+
+.drinks-list {
+  list-style: none;
+  margin-top: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+
+  overflow-y: auto;          /* ENABLE SCROLL */
+  padding-right: 5px;        /* space for scrollbar */
+}
+
+.drinks-list li {
+  background: #f5f5f5;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: left;
+}
+
+/* Animation */
+@keyframes zoomIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.drinks-card {
+  cursor: pointer;
+}
+
+/* SNACKS LIST (same behavior as drinks) */
+.snacks-list {
+  list-style: none;
+  margin-top: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+
+  overflow-y: auto;
+  padding-right: 5px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.snacks-list li {
+  background: #f5f5f5;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: left;
+}
+
+/* Make snacks card clickable */
+.snacks-card {
+  cursor: pointer;
+}
+
+/* DESSERT LIST (same as drinks & snacks) */
+.dessert-list {
+  list-style: none;
+  margin-top: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+
+  overflow-y: auto;
+  padding-right: 5px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dessert-list li {
+  background: #f5f5f5;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: left;
+}
+
+/* Make dessert card clickable */
+.dessert-card {
+  cursor: pointer;
+}
+
+/* FOOD MODAL */
+.food-modal {
+  max-width: 900px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* CATEGORY BUTTONS */
+.food-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.food-categories button {
+  background: #d40000;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.food-categories button:hover {
+  background: #b30000;
+}
+
+/* FOOD LIST */
+.food-list {
+  overflow-y: auto;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.food-list ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.food-list li {
+  background: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.food-placeholder {
+  text-align: center;
+  color: #777;
+}
+
+.food-categories .food-btn {
+  background: #d40000;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+/* Hover effect */
+.food-categories .food-btn:hover {
+  background: #b30000;
+}
+
+/* ACTIVE (selected) button */
+.food-categories .food-btn.active {
+  background: #ffffff;
+  color: #d40000;
+  border: 2px solid #d40000;
+  transform: scale(1.05);
+}
+
+.taal-logo {
+  font-family: 'Papyrus', fantasy;
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  color: #ffffff;           /* white like logo */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
